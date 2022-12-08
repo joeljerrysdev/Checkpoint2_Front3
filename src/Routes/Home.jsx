@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home</h1>
+      <h1>Home - teste</h1>
       <div className="card-grid container">
         <Card />
       </div>
