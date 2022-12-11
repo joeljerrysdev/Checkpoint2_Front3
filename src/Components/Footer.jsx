@@ -1,9 +1,12 @@
+import { useTheme } from "../hooks/useTheme";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
+  
   const scrollToTop = () => {
     window.scrollTo(0, 0)
   }
+  
   return (
     <footer>
       <div className={styles.footerWrapper}>
