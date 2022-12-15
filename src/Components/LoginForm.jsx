@@ -8,8 +8,8 @@ import styles from "./Form.module.css";
 
 
 const LoginForm = () => {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState()
+  const [password, setPassword] = useState()
   const navigate = useNavigate()
  const {changeToken} = useToken()
 
@@ -78,7 +78,7 @@ console.log("olha eu aqui")
               className={`form-control ${styles.inputSpacing}`}
               placeholder="Login"
               name="login"
-              onChange={e => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value.trim())}
               required
             />
             <input
@@ -86,7 +86,7 @@ console.log("olha eu aqui")
               placeholder="Password"
               name="password"
               type="password"
-              onChange={e => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value.trim())}
               required
             />
             <button className="btn btn-primary" type="submit" >

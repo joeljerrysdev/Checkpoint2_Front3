@@ -52,8 +52,8 @@ const Navbar = () => {
                 ao formulário de login
                 O botão de logout deverá ser testado darkmode
       se sim, btn-dark, se não, btn-light */}
-                {token !== "" ? (
-                  <button className="btn btn-light" onClick={deleteToken}>
+                {token !== null ? (
+                  <button className={`btn btn-${theme}`} onClick={deleteToken} >
                     Logout
                   </button>
                 ) : (

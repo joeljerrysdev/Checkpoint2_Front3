@@ -58,7 +58,7 @@ const DetailCard = () => {
                 Sobrenome: {dentista.sobrenome}
               </li>
               <li className="list-group-item">
-                Usuário: {}
+                Usuário: {dentista.nome}
               </li>
             </ul>
             <div className="text-center">

@@ -4,20 +4,21 @@ import { createContext, useContext } from "react";
 const TokenContext = createContext();
 
 export function TokenProvider(props) {
-    const [token, setToken] = useState('')
+  const tokenLocalStorage = localStorage.getItem('token')
+    const [token, setToken] = useState(tokenLocalStorage)
 //   const themeLocalStorage = localStorage.getItem("theme");
 //   const [theme, setTheme] = useState(
 //     themeLocalStorage === null ? "dark" : themeLocalStorage
 //   );
   function changeToken(tokenRecieved) {
     if (tokenRecieved !== token) {
-      setToken(tokenRecieved);
       localStorage.setItem("token", tokenRecieved);
+      setToken(tokenRecieved);
     }
   }
   function deleteToken(){
     localStorage.removeItem('token')
-    setToken('')
+    setToken(localStorage.getItem('token'))
   }
 
   return (

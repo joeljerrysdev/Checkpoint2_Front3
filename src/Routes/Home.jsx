@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import Card from "../Components/Card";
 import { useTheme } from "../hooks/useTheme";
 import { apiUrl } from "../api";
+import { useToken } from "../hooks/useToken";
 
 
 
 
 const Home = () => {
+  const {token} = useToken()
+  console.log(token)
   const { theme} = useTheme()
   const [dentistas, setDentistas]=useState([])
   useEffect(() => {

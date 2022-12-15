@@ -16,7 +16,7 @@ function App() {
       children: [
         { path: "", element: <Home /> },
         { path: "home", element: <Home /> },
-        { path: "login", element: <LoginForm /> },
+        { path: "login", element: <Login /> },
         { path: "dentista/:id", element: <Detail /> },
       ],
     },
