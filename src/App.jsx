@@ -3,6 +3,7 @@ import LoginForm from "./Components/LoginForm";
 import { MainLayout } from "./Components/MainLayout";
 
 import { ThemeProvider } from "./hooks/useTheme";
+import { TokenProvider } from "./hooks/useToken";
 import Detail from "./Routes/Detail";
 import Home from "./Routes/Home";
 import Login from "./Routes/Login";
@@ -22,9 +23,11 @@ function App() {
   ]);
 
   return (
+    <TokenProvider>
     <ThemeProvider>
       <RouterProvider router={appRouter} />
     </ThemeProvider>
+    </TokenProvider>
   );
 }
 

@@ -1,13 +1,21 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../api";
+import { useToken } from "../hooks/useToken";
 import styles from "./Form.module.css";
+
+
 
 const LoginForm = () => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate()
+ const {changeToken} = useToken()
+
+ useEffect(() => {
  
- 
+}, [username, password]);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -39,13 +47,18 @@ fetch(`${apiUrl}/auth`, requestConfig).then(
     if(response.ok){
       response.json().then(
         data => {
-          
-          localStorage.setItem('token',data.token)
-          console.log(response)
+          changeToken(data.token)
+          navigate('/home')
+          // localStorage.setItem('token',data.token)
+          // console.log(response)
         }
       )
     }else{
-      alert('senha incorreta')
+      setPassword("")
+      setUsername("")
+      alert('usuario ou senha incorreta')
+      console.log(password)
+      console.log(username)
     }
   }
 )

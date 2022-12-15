@@ -17,7 +17,7 @@ export function TokenProvider(props) {
   }
   function deleteToken(){
     localStorage.removeItem('token')
-    setToken(localStorage.getItem('token'))
+    setToken('')
   }
 
   return (

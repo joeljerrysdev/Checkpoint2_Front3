@@ -1,10 +1,14 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
+
+
 import { useTheme } from "../hooks/useTheme";
+import { useToken } from "../hooks/useToken";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-const {theme, changeTheme }= useTheme()
+  const { theme, changeTheme } = useTheme();
+  const { token, deleteToken } = useToken();
+     
+
   return (
     <header className="sticky-top">
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
@@ -47,10 +51,16 @@ const {theme, changeTheme }= useTheme()
                 Se o usuário estiver deslogado, um link fará um redirecionamento, com react-router,
                 ao formulário de login
                 O botão de logout deverá ser testado darkmode
-                se sim, btn-dark, se não, btn-light */}
-                <a className="nav-link" href="/login">
-                  Login
-                </a>
+      se sim, btn-dark, se não, btn-light */}
+                {token !== "" ? (
+                  <button className="btn btn-light" onClick={deleteToken}>
+                    Logout
+                  </button>
+                ) : (
+                  <a className="nav-link" href="/login">
+                    Login
+                  </a>
+                )}
               </li>
               <li className={`nav-item`}>
                 {/* Ao ser clicado, esse botão mudará a aplicação para dark mode ou light mode.
@@ -58,13 +68,12 @@ const {theme, changeTheme }= useTheme()
                  Na linha seguinte deverá ser feito um teste se a aplicação
                  está em dark mode e deverá utilizar o icone ☀ ou 🌙 e btn-dark ou btn-light*/}
                 <button
-                  className={`btn btn-${theme} ${styles.btnStyle
-                    }`}
-                    onClick={() =>
-                      changeTheme(theme === 'dark' ? 'light' : 'dark')
-                    }
+                  className={`btn btn-${theme} ${styles.btnStyle}`}
+                  onClick={() =>
+                    changeTheme(theme === "dark" ? "light" : "dark")
+                  }
                 >
-                  {theme === 'dark'? '☀':'🌙'}
+                  {theme === "dark" ? "☀" : "🌙"}
                 </button>
               </li>
             </ul>
