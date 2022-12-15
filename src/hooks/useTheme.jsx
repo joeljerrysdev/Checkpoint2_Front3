@@ -4,7 +4,7 @@ import { createContext, useContext } from "react";
 const ThemeContext = createContext();
 
 export function ThemeProvider(props) {
-    const [theme, setTheme] = useState('')
+    const [theme, setTheme] = useState('dark')
 //   const themeLocalStorage = localStorage.getItem("theme");
 //   const [theme, setTheme] = useState(
 //     themeLocalStorage === null ? "dark" : themeLocalStorage

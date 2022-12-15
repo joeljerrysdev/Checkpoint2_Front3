@@ -1,7 +1,17 @@
+
+import { useState } from "react";
+import { apiUrl } from "../api";
 import styles from "./Form.module.css";
 
 const LoginForm = () => {
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+ 
+ 
+
   const handleSubmit = (e) => {
+    e.preventDefault()
+    
     //Nesse handlesubmit você deverá usar o preventDefault,
     //enviar os dados do formulário e enviá-los no corpo da requisição 
     //para a rota da api que faz o login /auth
@@ -9,8 +19,39 @@ const LoginForm = () => {
     //no localstorage para ser usado em chamadas futuras
     //Com tudo ocorrendo corretamente, o usuário deve ser redirecionado a página principal,com react-router
     //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
+    const userData = {
+      'username': username,
+      'password': password
+  }
+  const requestHeaders = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+}
+  const requestConfig = {
+    method: 'POST',
+    headers: requestHeaders,
+    body: JSON.stringify(userData)
+}
+fetch(`${apiUrl}/auth`, requestConfig).then(
+  
+  response => {
+    
+    if(response.ok){
+      response.json().then(
+        data => {
+          
+          localStorage.setItem('token',data.token)
+          console.log(response)
+        }
+      )
+    }else{
+      alert('senha incorreta')
+    }
+  }
+)
+console.log("olha eu aqui")
   };
-
+  
   return (
     <>
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
@@ -24,6 +65,7 @@ const LoginForm = () => {
               className={`form-control ${styles.inputSpacing}`}
               placeholder="Login"
               name="login"
+              onChange={e => setUsername(e.target.value)}
               required
             />
             <input
@@ -31,9 +73,11 @@ const LoginForm = () => {
               placeholder="Password"
               name="password"
               type="password"
+              onChange={e => setPassword(e.target.value)}
               required
             />
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-primary" type="submit" >
+              
               Send
             </button>
           </form>
