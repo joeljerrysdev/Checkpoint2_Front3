@@ -59,6 +59,8 @@ form{
   gap: 1.125rem;
   text-align: center;
   margin: 0 auto;
+  padding-bottom:  2rem;
+  
 }
 
 table {
@@ -66,7 +68,7 @@ table {
     border-spacing: 0;
     width: 100%;
     display: table;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(204, 204, 204);
 
 }
 
@@ -83,6 +85,7 @@ tr:nth-child(even) {
 .dark{
   background-color: #12121296;
   color: white;
+  
 }
 .dark > a {
   color: white;
@@ -90,6 +93,9 @@ tr:nth-child(even) {
 
 .dark h5{
   color: white;
+}
+#login{
+  min-height: 28rem;
 }
 
 @media(min-width: 786px) and (max-width: 1065px){

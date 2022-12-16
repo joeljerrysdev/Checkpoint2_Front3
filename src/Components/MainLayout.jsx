@@ -8,9 +8,9 @@ export function MainLayout(){
     const {theme}= useTheme()
 
     return(
-        <div className={theme}>
+        <div className={`${theme}`}>
             <Navbar/>
-            <Outlet/>
+            <div className="geral"><Outlet/></div>
             <Footer/>
         </div>
     )

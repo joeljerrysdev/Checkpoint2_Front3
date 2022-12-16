@@ -38,10 +38,7 @@ const ScheduleForm = () => {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
       };
-      console.log(token)
-      console.log(dentista)
-      console.log(paciente)
-  
+        
       const requestBody = {
         paciente: {
           
@@ -149,7 +146,7 @@ const ScheduleForm = () => {
             <button className={`btn btn-light ${styles.button}`} type="submit"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal">
-              Schedule
+              Confirmar
             </button>
           </div>
         </form>
